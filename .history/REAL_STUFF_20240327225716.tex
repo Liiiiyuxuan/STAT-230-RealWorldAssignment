@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, latexsym, amsfonts}
+\usepackage{comment, enumerate, mathrsfs, stmaryrd, hyperref}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{blindtext}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{0.6cm}
+            
+        \Huge
+        \textbf{Do you like Texas hold 'em}
+            
+        \vspace{0.5cm}
+        \LARGE
+        STAT230 Real World Assignment 2024W
+            
+        \vspace{1.5cm}
+            
+        \textbf{Eason Li, Johnson Ji}
+            
+        \vspace{3.6cm}
+        
+        \begin{center}
+            \includegraphics[width = 0.4\textwidth]{UofLoo.png}
+        \end{center}
+
+        \vspace{0.4cm}
+            
+        \Large
+        Falculty of Math \\
+        University of Waterloo \\
+        Canada \\
+        April 8, 2024
+    \end{center}
+\end{titlepage}
+
+\newpage
+
+In a 7-card poker game, calculating the probability of getting a Royal Flush involves considering that you're dealing with a larger set of cards from the deck, but the core approach to finding the probability remains similar. Here, instead of choosing 5 cards out of 52, you're choosing 7 cards. However, the condition for a Royal Flush still depends on having those specific 5 cards (Ace, King, Queen, Jack, and 10 of the same suit), with the other two cards being any of the remaining 47 cards in the deck. The general steps to derive the expression would involve:
+
+1. **Total Number of Possible 7-Card Poker Hands**: This is calculated as the number of combinations of 52 cards taken 7 at a time, which is \(C(52, 7)\).
+
+2. **Number of Ways to Get a Royal Flush in 7 Cards**: For a 7-card hand to contain a Royal Flush, it must contain the specific set of 5 cards (Ace, King, Queen, Jack, 10 of the same suit), with the other 2 cards being any of the remaining 47 cards in the deck. Since the Royal Flush can come from any of the four suits, and the two additional cards can be any other two cards from the remaining 47, the number of ways to get a Royal Flush in a 7-card hand is the product of the number of suits (4) and the number of combinations of the remaining 47 cards taken 2 at a time, which is \(C(47, 2)\).
+
+3. **General Expression for the Probability**: The probability of getting a Royal Flush in a 7-card poker hand is the ratio of the number of ways to get a Royal Flush to the total number of possible 7-card hands. 
+
+So, the general expression for the probability \(P(\text{Royal Flush in 7-card poker})\) is:
+
+\[
+P(\text{Royal Flush in 7-card poker}) = \frac{4 \times C(47, 2)}{C(52, 7)}
+\]
+
+This expression gives you the probability of being dealt a Royal Flush in a game of 7-card poker.
+
+
+
+
+\end{document}

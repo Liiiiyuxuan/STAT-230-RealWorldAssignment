@@ -1,0 +1,43 @@
+\documentclass[final]{beamer}
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+
+\usepackage{amsmath, amsthm, amssymb, latexsym}
+
+% Define some colors
+\definecolor{DarkBlue}{rgb}{0.1,0.1,0.5}
+\definecolor{LightBlue}{rgb}{0.3,0.3,0.9}
+\setbeamercolor{block title}{fg=LightBlue,bg=LightBlue}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% Title
+\title{Fundamental Theorems in Mathematics}
+
+% Author
+\author{Author Name}
+
+% Institution
+\institute{Math Department, University X}
+
+% Date
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This abstract is in a single column.
+\end{abstract}
+
+\begin{multicols}{2}
+\section{Introduction}
+This section and the rest of the document are in two columns. The `multicol` package allows for parts of the document to be in multiple columns without affecting the entire document.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+\section{Another Section}
+Content here continues in two-column format. You can include equations, figures, and tables as you would normally, and they will be placed within a column.
+
+\end{multicols}
+
+\end{document}
