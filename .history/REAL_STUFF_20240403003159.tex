@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, latexsym, amsfonts}
+\usepackage{comment, enumerate, mathrsfs, stmaryrd, hyperref}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{blindtext}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{0.6cm}
+            
+        \Huge
+        \textbf{Do you like Texas hold 'em}
+            
+        \vspace{0.5cm}
+        \LARGE
+        STAT230 Real World Assignment 2024W
+            
+        \vspace{1.5cm}
+            
+        \textbf{Eason Li, Johnson Ji}
+            
+        \vspace{3.6cm}
+        
+        \begin{center}
+            \includegraphics[width = 0.4\textwidth]{UofLoo.png}
+        \end{center}
+
+        \vspace{0.4cm}
+            
+        \Large
+        Falculty of Math \\
+        University of Waterloo \\
+        Canada \\
+        April 8, 2024
+    \end{center}
+\end{titlepage}
+
+\newpage
+
+\begin{center}
+    \textcolor{blue}{
+        In this report, we consider the case a player uses the best 
+        five-card poker hand out of seven cards.
+    }
+\end{center}
+The stages consist of a series of three cards (``the flop''), later an 
+additional single card (``the turn''), and a final card (``the river''). 
+Each player seeks the best five-card poker hand from any combination of 
+the seven cards: the five community cards and their two hole cards.
+\vspace*{5mm}\\
+For a 7-card hand to contain a Royal Flush, i.e.
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \rank/\suit/\x in {A/\(\heartsuit\)/0, K/\(\heartsuit\)/1.5, Q/\(\heartsuit\)/3, J/\(\heartsuit\)/4.5, 10/\(\heartsuit\)/6} {
+        % Draw the card
+        \draw (\x,0) rectangle ++(1.2,1.8);
+        % Add the rank and suit
+        \node at (\x+0.6,0.9) {\rank\suit};
+        }
+    \end{tikzpicture}
+\end{center}
+it must contain the specific set of 5 cards 
+(Ace, King, Queen, Jack, 10 of the same suit), 
+with the other 2 cards being any of the remaining 47 cards in the deck. 
+Therefore, the probability of getting a Royal Flush in a group of seven 
+cards can be evaluated as 
+\[
+P(\text{Royal Flush in 7-card poker}) = \frac{4 \times C(47, 2)}{C(52, 7)}
+\]
+
+\newpage
+
+\subsection*{Starting Hands}
+
+Out of the $\displaystyle \binom{52}{2}$ possible starting hands, there 
+are $13 \times 13$ distinct types of starting hands since there are 13 
+ranks, there are 13 distinct pocket pairs (e.g. AA), $\displaystyle 
+\binom{13}{2} = 78$ distinct suited 2-card combinations (e.g. AKs) 
+and $\displaystyle \binom{13}{2} = 78$ distinct unsuited 2-card 
+combinations (e.g. AKo). Notice that 
+\[
+    13 \times 13 = 13 + \binom{13}{2} + \binom{13}{2}
+\]
+It is intended to calculate the pre-flop 
+(before any community cards are dealt) win rate for each distinct 
+2-card combination. For each distinct combination, there are 
+\[
+    \left[ \; \prod_{i = 1}^{n - 1} \binom{52 - 2i}{2} \; \right] \times \binom{52 - 2n}{5}
+\] 
+possible outcomes for n players. A simulation (Appendix) size of 
+$100 \; 000$ is chosen for this section (with $n = 2$ players):
+\begin{align*}
+    & \code{Pocket Pair: 5976} \\
+    & \code{Suited: 23167} \\
+    & \code{Unsuited: 70857} \\
+    & \code{Contains Ace or King: 28643} \\
+    & \code{Does Not Contain Ace or King: 71357}
+\end{align*}
+
+
+\subsection*{Poker Hands}
+
+The chance of making, winning and tying with each poker hand is 
+investigated. The total number of possible outcomes for a hand 
+of poker between $n$ players is given by:
+\[
+    \left[ \; \prod_{i = 0}^{n - 1} \binom{52 - 2i}{2} \; \right] \cdot \binom{52 - 2n}{2}
+\]
+which is $2.781 \times 10^{12}$ for just 2 players. 
+Since it isn't realistic to go through all possible outcomes,
+a simulation (Appendix) size of $100 \; 000$ is chosen (with 5 players):
+\begin{align*}
+    \begin{split}
+        Player 1:
+        \code{Straight Flush: 4}
+        \code{Quad: 15}
+        \code{Full House: 250}
+        \code{Flush: 307}
+        \code{Straight: 447}
+        \code{Triple: 536}
+        \code{Two Pairs: 2341}
+        \code{Pair: 4355}
+        \code{High Card: 1745}
+    \end{split}
+    \quad
+    \begin{split}
+        & \code{Triple: 2107} \\
+        & \code{Two Pairs: 4715} \\
+        & \code{Pair: 42131} \\
+        & \code{High Card: 50311} 
+    \end{split}
+\end{align*}
+With the same data, we can also find the winning + tie rate for 
+each poker hand:
+
+
+
+
+
+
+
+
+\end{document}
