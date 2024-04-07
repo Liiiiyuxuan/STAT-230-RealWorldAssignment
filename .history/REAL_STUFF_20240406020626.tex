@@ -4,7 +4,6 @@
 \usepackage{comment, enumerate, mathrsfs, stmaryrd, hyperref}
 \usepackage{tikz}
 \usepackage{xcolor}
-\usepackage{listings}
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{booktabs}
@@ -12,35 +11,9 @@
 \usepackage{tabularx}
 \usepackage{blindtext}
 \usepackage[a4paper, total={7in, 9in}]{geometry}
-\usepackage[toc,page]{appendix}
 
 \definecolor{codegray}{gray}{0.9}
 \newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
-}
-
-\lstset{style=mystyle}
 
 \begin{document}
 
@@ -83,10 +56,34 @@
         five-card poker hand out of seven cards.
     }
 \end{center}
+The stages consist of a series of three cards (``the flop''), later an 
+additional single card (``the turn''), and a final card (``the river''). 
+Each player seeks the best five-card poker hand from any combination of 
+the seven cards: the five community cards and their two hole cards.
+\vspace*{5mm}\\
+For a 7-card hand to contain a Royal Flush, i.e.
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \rank/\suit/\x in {A/\(\heartsuit\)/0, K/\(\heartsuit\)/1.5, Q/\(\heartsuit\)/3, J/\(\heartsuit\)/4.5, 10/\(\heartsuit\)/6} {
+        % Draw the card
+        \draw (\x,0) rectangle ++(1.2,1.8);
+        % Add the rank and suit
+        \node at (\x+0.6,0.9) {\rank\suit};
+        }
+    \end{tikzpicture}
+\end{center}
+it must contain the specific set of 5 cards 
+(Ace, King, Queen, Jack, 10 of the same suit), 
+with the other 2 cards being any of the remaining 47 cards in the deck. 
+Therefore, the probability of getting a Royal Flush in a group of seven 
+cards can be evaluated as 
+\[
+P(\text{Royal Flush in 7-card poker}) = \frac{4 \times C(47, 2)}{C(52, 7)}
+\]
 
+\newpage
 
-
-\section*{Starting Hands (with 2 players)}
+\subsection*{Starting Hands (with 2 players)}
 
 Out of the $\displaystyle \binom{52}{2}$ possible starting hands, there 
 are $13 \times 13$ distinct types of starting hands since there are 13 
@@ -129,9 +126,7 @@ while the probability for unsuited pair is
 Lmao our simulations are pretty close to our theoretical values. 
 
 
-
-
-\section*{Poker Hands}
+\subsection*{Poker Hands}
 
 The chance of making, winning and tying with each poker hand is 
 investigated. The total number of possible outcomes for a hand 
@@ -172,7 +167,7 @@ a simulation (Appendix) size of $100 \; 000$ is chosen (with 2 players):
 We can also calculate the theoretical expression of the 
 absolute frequency of the occurences of each hands:
 \begin{enumerate}
-    \item \textbf{Straight flush (including royal straight flush):}
+    \item \textbf{Straight flush (including straight flush):}
     \[
         \binom{10}{1} \binom{4}{1} \binom{46}{2} 
         = 4,324
@@ -242,7 +237,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Strait Flush & \qquad \qquad \( \displaystyle \frac{4,324}{133,784,560} \approx 0.0311\% \) \\
+    \end{tikzpicture} Strait Flush & \( \displaystyle \frac{4,324}{133,784,560} \approx 0.0311\% \) \\
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {A/\(\heartsuit\)/0, A/\(\clubsuit\)/1, A/\(\diamondsuit\)/2, A/\(\spadesuit\)/3, 6/\(\heartsuit\)/4} {
         % Draw the card
@@ -250,7 +245,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Quad & \qquad \qquad \( \displaystyle \frac{224,848}{133,784,560} \approx 0.168\% \) \\
+    \end{tikzpicture} Quad & \( \displaystyle \frac{224,848}{133,784,560} \approx 0.168\% \) \\
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {8/\(\heartsuit\)/0, 8/\(\diamondsuit\)/1, 8/\(\spadesuit\)/2, K/\(\spadesuit\)/3, K/\(\diamondsuit\)/4} {
         % Draw the card
@@ -258,7 +253,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Full House & \qquad \qquad \( \displaystyle \frac{3,473,184}{133,784,560} \approx 2.60\% \) \\
+    \end{tikzpicture} Full House & \( \displaystyle \frac{3,473,184}{133,784,560} \approx 2.60\% \) \\
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {8/\(\clubsuit\)/0, 3/\(\clubsuit\)/1, 6/\(\clubsuit\)/2, J/\(\clubsuit\)/3, A/\(\clubsuit\)/4} {
         % Draw the card
@@ -266,7 +261,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Flush & \qquad \qquad \( \displaystyle \frac{4,047,644}{133,784,560} \approx 3.03\% \) \\
+    \end{tikzpicture} Flush & \( \displaystyle \frac{4,047,644}{133,784,560} \approx 3.03\% \) \\
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {7/\(\heartsuit\)/0, 8/\(\heartsuit\)/1, 9/\(\diamondsuit\)/2, 10/\(\spadesuit\)/3, J/\(\diamondsuit\)/4} {
         % Draw the card
@@ -274,7 +269,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Straight & \qquad \qquad \( \displaystyle \frac{6,180,020}{133,784,560} \approx 4.62\% \) \\ 
+    \end{tikzpicture} Straight & \( \displaystyle \frac{6,180,020}{133,784,560} \approx 4.62\% \) \\ 
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {Q/\(\heartsuit\)/0, Q/\(\spadesuit\)/1, Q/\(\diamondsuit\)/2, 5/\(\heartsuit\)/3, A/\(\diamondsuit\)/4} {
         % Draw the card
@@ -282,7 +277,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Triple & \qquad \qquad \( \displaystyle \frac{6,461,620}{133,784,560} \approx 4.83\% \) \\ 
+    \end{tikzpicture} Triple & \( \displaystyle \frac{6,461,620}{133,784,560} \approx 4.83\% \) \\ 
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {3/\(\spadesuit\)/0, 3/\(\clubsuit\)/1, 6/\(\heartsuit\)/2, 6/\(\heartsuit\)/3, Q/\(\clubsuit\)/4} {
         % Draw the card
@@ -290,7 +285,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} Two pairs & \qquad \qquad \( \displaystyle \frac{31,433,400}{133,784,560} \approx 23.5\% \) \\
+    \end{tikzpicture} Two pairs & \( \displaystyle \frac{31,433,400}{133,784,560} \approx 23.5\% \) \\
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {5/\(\heartsuit\)/0, 5/\(\spadesuit\)/1, 2/\(\clubsuit\)/2, J/\(\clubsuit\)/3, A/\(\diamondsuit\)/4} {
         % Draw the card
@@ -298,7 +293,7 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} One pair & \qquad \qquad \( \displaystyle \frac{58,627,800}{133,784,560} \approx 43.8\% \) \\ 
+    \end{tikzpicture} One pair & \( \displaystyle \frac{58,627,800}{133,784,560} \approx  \) \\ 
     \begin{tikzpicture}
         \foreach \rank/\suit/\x in {2/\(\diamondsuit\)/0, 5/\(\spadesuit\)/1, 6/\(\spadesuit\)/2, J/\(\heartsuit\)/3, A/\(\clubsuit\)/4} {
         % Draw the card
@@ -306,19 +301,15 @@ find the probability of each hand:
         % Add the rank and suit
         \node at (\x+0.3,0.5) {\rank\suit};
         }
-    \end{tikzpicture} High hands & \qquad \qquad \( \displaystyle \frac{23,294,460}{133,784,560} \approx 17.4\% \) \\
+    \end{tikzpicture} High hands & cell 2 \\
     \hline
     \end{tabular}
 \end{table*}
 
-We can easily discover that all the probabilities sum up to be 1, thus 
-we can that this is in fact a multinomial distribution. 
 
 
 
-
-\newpage
-\section*{How many times does each player win in a 2-player poker game}
+\subsection*{How many times does each player win in a 2-player poker game}
 
 We can also simulate how many times each player wins:
 
@@ -326,88 +317,16 @@ We can also simulate how many times each player wins:
     \includegraphics[width = 0.8\textwidth]{images/win_rate_2_player.png}
 \end{center}
 
-The bar chart presents the outcomes of poker games between two players. 
-It shows the frequency of wins for Player 1, Player 2, and the number 
-of games that ended in a tie. Statistically, we can observe that each 
-no player has a significant advantage over the other. The small difference 
-in the heights of the bars for Player 1 Wins and Player 2 Wins implies 
-a roughly uniform distribution of outcomes between the two players. 
+where we can find that the number of wins fairly close among the 
+two players.
 
 Moreover, in a game of 4 player, the winning rates are still fairly close 
-among all participants:
+among all paarticipants:
 
 \begin{center}
     \includegraphics[width = 0.8\textwidth]{images/win_rate_4_player.png}
 \end{center}
 
-
-
-\newpage
-\section*{Appendices}
-
-\subsection*{Some code modelling poker hands:}
-
-\begin{center}
-    \begin{lstlisting}[language=Python]
-        for _ in range(num_simulations):
-            deck = create_deck()
-            random.shuffle(deck)
-            
-            player1_cards = deck[:2]
-            player2_cards = deck[2:4]
-            community_cards = deck[4:9]
-            
-            player1_hand = find_best_hand(player1_cards + community_cards)
-            player2_hand = find_best_hand(player2_cards + community_cards)
-            
-            hand_type_counters['Player 1'][player1_hand] += 1
-            hand_type_counters['Player 2'][player2_hand] += 1
-
-        for player, counters in hand_type_counters.items():
-            print(f"{player}:")
-            for hand_type, count in counters.items():
-                print(f"{hand_type}: {count}")
-            print()
-        \end{lstlisting}
-\end{center}
-
-This code simulates multiple rounds of a poker game, shuffling and 
-distributing a deck of cards between two players and the community 
-pool in each round. It eventually prints a summary of how often 
-each type of hand occurred for each player, providing insights into 
-the distribution of hand types over the simulated games.
-
-\subsection*{Some code modelling winning frequencies in a two-player game:}
-
-\begin{center}
-    \begin{lstlisting}[language=Python]
-        def simulate_games(num_games):
-            player1_wins = 0
-            player2_wins = 0
-            ties = 0
-            
-            for _ in range(num_games):
-                deck = create_deck()
-                player1_hand, player2_hand, community_cards = deal_hands(deck)
-                
-                result = evaluate_and_compare_hands
-                (player1_hand + community_cards, player2_hand + community_cards)
-                
-                if result == 'player1':
-                    player1_wins += 1
-                elif result == 'player2':
-                    player2_wins += 1
-                else:
-                    ties += 1
-            
-            return player1_wins, player2_wins, ties
-    \end{lstlisting}
-\end{center}
-
-The ``simulate\_games'' function runs a specified number of poker 
-games between two players, counting wins for each player and ties.
-Wins for each player and ties are tallied and returned at the end, 
-providing a summary of game results.
 
 
 

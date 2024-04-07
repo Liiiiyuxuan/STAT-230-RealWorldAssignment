@@ -83,8 +83,32 @@
         five-card poker hand out of seven cards.
     }
 \end{center}
+The stages consist of a series of three cards (``the flop''), later an 
+additional single card (``the turn''), and a final card (``the river''). 
+Each player seeks the best five-card poker hand from any combination of 
+the seven cards: the five community cards and their two hole cards.
+\vspace*{5mm}\\
+For a 7-card hand to contain a Royal Flush, i.e.
+\begin{center}
+    \begin{tikzpicture}
+        \foreach \rank/\suit/\x in {A/\(\heartsuit\)/0, K/\(\heartsuit\)/1.5, Q/\(\heartsuit\)/3, J/\(\heartsuit\)/4.5, 10/\(\heartsuit\)/6} {
+        % Draw the card
+        \draw (\x,0) rectangle ++(1.2,1.8);
+        % Add the rank and suit
+        \node at (\x+0.6,0.9) {\rank\suit};
+        }
+    \end{tikzpicture}
+\end{center}
+it must contain the specific set of 5 cards 
+(Ace, King, Queen, Jack, 10 of the same suit), 
+with the other 2 cards being any of the remaining 47 cards in the deck. 
+Therefore, the probability of getting a Royal Flush in a group of seven 
+cards can be evaluated as 
+\[
+P(\text{Royal Flush in 7-card poker}) = \frac{4 \times C(47, 2)}{C(52, 7)}
+\]
 
-
+\newpage
 
 \section*{Starting Hands (with 2 players)}
 
@@ -129,8 +153,6 @@ while the probability for unsuited pair is
 Lmao our simulations are pretty close to our theoretical values. 
 
 
-
-
 \section*{Poker Hands}
 
 The chance of making, winning and tying with each poker hand is 
@@ -172,7 +194,7 @@ a simulation (Appendix) size of $100 \; 000$ is chosen (with 2 players):
 We can also calculate the theoretical expression of the 
 absolute frequency of the occurences of each hands:
 \begin{enumerate}
-    \item \textbf{Straight flush (including royal straight flush):}
+    \item \textbf{Straight flush (including straight flush):}
     \[
         \binom{10}{1} \binom{4}{1} \binom{46}{2} 
         = 4,324
@@ -317,7 +339,6 @@ we can that this is in fact a multinomial distribution.
 
 
 
-\newpage
 \section*{How many times does each player win in a 2-player poker game}
 
 We can also simulate how many times each player wins:
@@ -329,12 +350,10 @@ We can also simulate how many times each player wins:
 The bar chart presents the outcomes of poker games between two players. 
 It shows the frequency of wins for Player 1, Player 2, and the number 
 of games that ended in a tie. Statistically, we can observe that each 
-no player has a significant advantage over the other. The small difference 
-in the heights of the bars for Player 1 Wins and Player 2 Wins implies 
-a roughly uniform distribution of outcomes between the two players. 
+no pl significant advantage for either player. The small difference in the heights of the bars for Player 1 Wins and Player 2 Wins implies a roughly uniform distribution of outcomes between the two players. This near-equivalence in win frequency could suggest a fair or symmetric setup within the simulated games. The lesser height of the bar for Ties confirms that draws are less frequent than victories for either player.
 
 Moreover, in a game of 4 player, the winning rates are still fairly close 
-among all participants:
+among all paarticipants:
 
 \begin{center}
     \includegraphics[width = 0.8\textwidth]{images/win_rate_4_player.png}
