@@ -68,7 +68,7 @@
         \vspace{0.4cm}
             
         \Large
-        Faculty of Math \\
+        Falculty of Math \\
         University of Waterloo \\
         Canada \\
         April 8, 2024
@@ -370,42 +370,16 @@ And the turn has revealed the following cards:
 In this situation, your outs on the river are if any heart is revealed 
 ($13-4 = 9$ possibilities) to form a flush, or if any ace or king is 
 revealed ($3+3 = 6$ possibilities) to form top pair. Summing these 
-together, we obtain that our total number of outs is $15$, and our 
-out odds are $15/(52-6) \approx 32.6\%$.
+together, we obtain that our total number of outs is $15$, and our out odds are $15/(52-6) \approx 32.6\%$.
 
 \section*{Expected Value of Calling}
 
-Continuing this example, suppose that the current pot has \$50, and our 
-opponent has just raised by \$30. We can calculate the expected value 
-of calling, and use this to determine whether a call is profitable or 
-not. By using our out odds as a rough substitute for our equity, or the 
-chance that we win the pot, we can use the formula for expected value: 
-\[
-    E[X] = P(\text{winning}) \cdot \text{gain} - P(\text{losing}) \cdot \text{loss}
-\]
-So for instance, in this example, our probability of winning would be 
-$32.6\%$, and our probability of losing would be $100\%-32.6\% = 67.4\%$. 
-Our gain would be equal to $\$80$, and our loss would be $\$30$ because 
-we are essentially putting in $\$30$ to have a chance of winning the pot 
-after our opponent has raised. Plugging these values into the formula, 
-we obtain:
-\[
-    E[X] = 0.326 \cdot \$80 - 0.674 \cdot \$30 = \$5.83
-\]
+Continuing this example, suppose that the current pot has \$50, and our opponent has just raised by \$30. We can calculate the expected value of calling, and use this to determine whether a call is profitable or not. By using our out odds as a rough substitute for our equity, or the chance that we win the pot, we can use the formula for expected value: $$E[X] = P(\text{winning}) \cdot \text{gain} - P(\text{losing}) \cdot \text{loss}$$
+So for instance, in this example, our probability of winning would be $32.6\%$, and our probability of losing would be $100\%-32.6\% = 67.4\%$. Our gain would be equal to $\$80$, and our loss would be $\$30$ because we are essentially putting in $\$30$ to have a chance of winning the pot after our opponent has raised. Plugging these values into the formula, we obtain:
+$$E[X] = 0.326 \cdot \$80 - 0.674 \cdot \$30 = \$5.83$$
 Hence, a call is theoretically profitable. \\
 
 However, this model skips out on many other details associated with the game of poker. For one, this assumes that an out is equivalent to winning the round, which isn't really reasonable. The opponent could have any range of cards that beat your hand, and there really isn't any way to know for certain. Furthermore, there's also the knowledge of knowing how likely your opponent is to bluff. Depending on this factor, it may be ideal to bet on unprofitable calls. But above all, these formulae are ultimately guidelines for you to follow. Statistics can and will help guide you along in times of confusion, but its your intuition that is your strongest weapon, and what will win you the most games.
-
-
-
-\section*{Citations}
-
-\begin{enumerate}[ {[} 1 {]} ]
-    \item A. Bărbulescu. Texas Hold'em Poker probabilities. Available at \url{http://probability.infarom.ro/holdempoker.html}
-    \item PokerStrategy.com. Texas Hold'em probabilities. Available at \url{https://www.pokerstrategy.com/strategy/various-poker/texas-holdem-probabilities/}
-    \item Wikipedia contributors. Poker probability. Wikipedia, The Free Encyclopedia. Available at \url{https://en.wikipedia.org/wiki/Poker_probability}
-\end{enumerate}
-
 
 
 
